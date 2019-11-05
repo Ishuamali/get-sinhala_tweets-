@@ -11,6 +11,7 @@ tweets = []  # the list containing the tweets
 # opening the csv file  and getting the twitter id coloumns
 csvfile = open('get_tweets.csv', encoding="utf-8")
 
+
 readCSV = csv.reader(csvfile, delimiter=',')
 for row in readCSV:
     if (row and row[1] != ''):
@@ -38,21 +39,6 @@ for tweet in tweepy.Cursor(api.search,
 
         # append it to the tweets_df
         tweets_df =  tweets_df.append(df , ignore_index=True)
-
-# ********** commented  by dj ***************
-# # convert 'tweets' list to pandas.DataFrame
-# tweets_df = pd.DataFrame(vars(tweets[i]) for i in range(len(tweets)))
-# # define attributes you want
-# tweet_atts = [
-#           'id',
-#           'full_text',
-#           'created_at'
-#       ]
-# # subset dataframe
-# tweets_df = tweets_df[tweet_atts]
-
-
-# *********** end of comment *****************
 
 
 with open('get_tweets.csv', 'a', encoding="utf-8") as f:
